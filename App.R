@@ -190,8 +190,8 @@ ui <- page_navbar(
   nav_spacer(),
   nav_item(input_dark_mode(id = "dark_mode", mode = "light")),
 
-  # ── TAB 1 · OVERVIEW ─────────────────────────────────────
-  nav_panel("Overview",
+  # ── TAB 1 · DASHBOARD ─────────────────────────────────────
+  nav_panel("Dashboard",
     div(
       style = "display:flex; justify-content:flex-end; margin-bottom:12px;",
       div(
@@ -532,7 +532,7 @@ server <- function(input, output, session) {
     paste0("$", round(mean(GDF()$sal_spread, na.rm = TRUE), 1), "K"))
 
   # ════════════════════════════════════════════════════════
-  #  OVERVIEW
+  #  DASHBOARD
   # ════════════════════════════════════════════════════════
 
   output$p_dumbbell <- renderPlotly({
