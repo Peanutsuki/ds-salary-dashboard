@@ -176,7 +176,7 @@ ui <- page_navbar(
     bs_add_rules("
       [data-bs-theme=dark] {
         --bs-body-bg:      #111827;
-        --bs-body-color:   #F0F4FF;
+        --bs-body-color:   rgb(240, 244, 255);
         --bs-primary:      #2E86AB;
         --bs-success:      #10B981;
         --bs-warning:      #F59E0B;
