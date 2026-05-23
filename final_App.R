@@ -384,7 +384,7 @@ html, body { height: auto !important; min-height: unset !important; overflow-y: 
 # ── 4. JavaScript ─────────────────────────────────────────────
 sidebar_js <- "
 $(function() {
-  $('#nav-hamburger').on('click', function() {
+  $(document).on('click', '#nav-hamburger', function() {
     var isOpen = $('#left-sidebar').hasClass('open');
     if (isOpen) {
       $('#left-sidebar').removeClass('open');
@@ -654,15 +654,22 @@ ui <- fluidPage(
         )
       ),
 
-      # ── ABOUT ───────────────────────────────────────────
-      nav_panel("about",
-        tab_toolbar("About", "Dataset and project information"),
-        div(style = "padding: 8px 16px 24px;",
-          card(card_header(tags$i(class="bi bi-info-circle-fill"), " About This Dashboard"),
-            card_body(markdown("
-## Purpose
-Explores the **US data science job market** using 742 real Glassdoor postings to answer:
-*What role, skills, location, and company should I target to maximize my data science salary?*
+     # ── ABOUT ───────────────────────────────────────────
+nav_panel("about",
+        tab_toolbar("", ""),
+        card_body(
+        markdown("
+## About
+
+This web dashboard serves as our learning evidence for **CS 226 Data Analytics - Statistics Using R, AY 2025–2026**.
+It utilizes the **Jobs Dataset from Glassdoor** (thedevastator, Kaggle 2022), which includes 742 job postings
+across 38 US states and 24 industry sectors collected between 2017–2018. The dataset contains job titles,
+salary estimates, company information, required skills, and location data.
+
+The application aims to identify patterns in the **US data science job market** and provide interactive
+visualizations to answer: *What role, skills, location, and company should I target to maximize my data
+science salary?* This dashboard offers valuable insights for students, job seekers, and professionals in
+the data field — particularly in understanding salary drivers, skill demands, and regional hiring trends.
 
 ---
 
@@ -675,21 +682,21 @@ Explores the **US data science job market** using 742 real Glassdoor postings to
 | **Skills** | Skill demand %, salary premium, co-occurrence patterns |
 | **Company** | How size, ownership type, rating & age affect pay |
 | **Career Fit** | Personalised salary estimate + skill gap analysis |
+"),
+        tags$a(
+          href = "https://www.kaggle.com/datasets/thedevastator/jobs-dataset-from-glassdoor",
+          target = "_blank",
+          class = "btn btn-primary btn-sm",
+          tags$i(class = "bi bi-database-fill"), " Link to the Dataset"
+        ),
+        markdown("
 
----
-
-## Dataset
-**Jobs Dataset from Glassdoor** — thedevastator (Kaggle, 2022)
-742 postings · 38 US states · 24 sectors · 2017–2018
-[kaggle.com/datasets/thedevastator/jobs-dataset-from-glassdoor](https://www.kaggle.com/datasets/thedevastator/jobs-dataset-from-glassdoor)
-
-*Developed for academic purposes — Data Analytics with R.*
-            ")))
-        )
+*CS 226 Data Analytics - Stat Using R, AY 2025-2026.*
+")))
       )
     )
   )
-)
+
 
 # ── 6. SERVER ─────────────────────────────────────────────────
 server <- function(input, output, session) {
