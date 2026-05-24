@@ -53,6 +53,10 @@ install.packages(c(
 shiny::runApp()
 ```
 
+## Shinyapps Link 
+
+https://nutsthree.shinyapps.io/DS-Salary-LE/
+
 ---
 
 ## Notes
